@@ -41,10 +41,19 @@ impl Plugin for StrLen {
         call: &EvaluatedCall,
         input: &Value,
     ) -> Result<Value, LabeledError> {
-        Ok(Value::Int {
-            val: input.as_string().unwrap().len() as i64,
-            span: call.head,
-        })
+        match input.as_string() {
+            Ok(s) => Ok(Value::Int {
+                val: s.len() as i64,
+                span: call.head,
+            }),
+            Err(e) => {
+                return Err(LabeledError {
+                    label: "Unable to convert input into a string".to_string(),
+                    msg: e.to_string(),
+                    span: Some(input.span()?),
+                })
+            }
+        }
     }
 }
 
