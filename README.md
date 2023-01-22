@@ -1,7 +1,7 @@
 # nu_plugin_len
 An example plugin for `nushell` to compute length of `String`s
 
-## install the plugin
+## :open_file_folder: install the plugin
 - build and install the binary with
 ```bash
 cargo install --path .
@@ -16,13 +16,13 @@ register ~/.local/share/cargo/bin/nu_plugin_len
 > above because my `CARGO_HOME` is set to `($env.XDG_DATA_HOME | path join "cargo")`,
 > i.e. `~/.local/share/cargo`, in my `env.nu`
 
-## use the plugin
+## :gear: use the plugin
 ```bash
 > "this is an example string" | len
 25
 ```
 
-## change the path to the dependencies
+## :package: change the path to the dependencies
 > **Warning**  
 > the path to the dependencies, i.e. `nu-plugin` and `nu-protocol` are hardcoded to
 > the `nushell` source on my machine.
@@ -31,7 +31,7 @@ register ~/.local/share/cargo/bin/nu_plugin_len
 i've added a little script in [`scripts/`](scripts) called [`add-deps.nu`](scripts/add-deps.nu):
 - have a look at `./scripts/add-deps.nu --help` for more information about the script
 
-## documentation
+## :scroll: documentation
 one can have a look at the documentation of the crate by going to [`docs/`](docs)
 > **Note**  
 > this documentation has bee generated with `./scripts/doc.nu`
