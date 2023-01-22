@@ -1,4 +1,4 @@
-//! A simple plugin that ships the `my_str_len` command to `nushell` to compute the length of
+//! A simple plugin that ships the `len` command to `nushell` to compute the length of
 //! strings.
 //!
 //! This `nu_plugin_len` is greatly inspired by
@@ -10,7 +10,7 @@
 //!
 //! # Examples
 //! ```bash
-//! > "this is an example string" | my_str_len
+//! > "this is an example string" | len
 //! 25
 //! ```
 //!
@@ -23,11 +23,11 @@ use nu_protocol::{Signature, Value};
 /// The main structure used by the plugin protocol to communicate with `nushell`.
 pub struct StrLen;
 
-/// The implementation of the plugin protocol for our `my_str_len`.
+/// The implementation of the plugin protocol for our `len`.
 impl Plugin for StrLen {
-    /// Define the signature of `my_str_len`, taking a single string from `stdin`.
+    /// Define the signature of `len`, taking a single string from `stdin`.
     fn signature(&self) -> Vec<Signature> {
-        vec![Signature::build("my_str_len")
+        vec![Signature::build("len")
             .usage("Give the length of the input string")
             .input_type(nu_protocol::Type::String)]
     }

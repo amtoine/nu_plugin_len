@@ -18,7 +18,7 @@ register ~/.local/share/cargo/bin/nu_plugin_len
 
 ## use the plugin
 ```bash
-> "this is an example string" | my_str_len
+> "this is an example string" | len
 25
 ```
 
