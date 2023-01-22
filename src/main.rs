@@ -41,6 +41,21 @@ impl Plugin for StrLen {
         call: &EvaluatedCall,
         input: &Value,
     ) -> Result<Value, LabeledError> {
+        match input.get_type() {
+            Type::String => (),
+            _ => {
+                let error_message = format!(
+                    "Input is not a string: found {}",
+                    input.get_type().to_string()
+                );
+                return Err(LabeledError {
+                    label: error_message.clone(),
+                    msg: error_message,
+                    span: Some(input.span()?),
+                });
+            }
+        }
+
         match input.as_string() {
             Ok(s) => Ok(Value::Int {
                 val: s.len() as i64,
