@@ -30,3 +30,8 @@ register ~/.local/share/cargo/bin/nu_plugin_len
 
 i've added a little script in [`scripts/`](scripts) called [`add-deps.nu`](scripts/add-deps.nu):
 - have a look at `./scripts/add-deps.nu --help` for more information about the script
+
+## documentation
+one can have a look at the documentation of the crate by going to [`docs/`](docs)
+> **Note**  
+> this documentation has bee generated with `./scripts/doc.nu`
