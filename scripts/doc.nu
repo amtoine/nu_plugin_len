@@ -4,6 +4,6 @@ open src/main.rs
 | lines
 | parse "//!{line}"
 | get line
-| str trim
+| str replace " " ""
 | str join "\n"
 | save --force docs/README.md
