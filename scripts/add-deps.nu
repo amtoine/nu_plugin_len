@@ -5,12 +5,15 @@
 # Example:
 # as i store all my git-related projects under `$env.GIT_REPOS_HOME`, inside a directory
 # with format "{host}/{owner}/{repository}":
+#
 # ```bash
 # ./scripts/add-deps.nu (
 #     $env.GIT_REPOS_HOME | path join "github.com" "nushell" "nushell"
 # )
 # ```
+#
 # might result in a diff in the repo similar to 
+#
 # ```diff
 # diff --git a/Cargo.toml b/Cargo.toml
 # index 58213a0..a663b42 100644
