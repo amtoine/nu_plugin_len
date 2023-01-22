@@ -17,8 +17,8 @@
 //! [`nu_plugin_example`]: https://github.com/nushell/nushell/tree/b97bfe9297bed4c6063cdd27af0ac4ffe6c065ec/crates/nu_plugin_example
 //! [*Create a plugin (in `rust`)*]: https://www.nushell.sh/contributor-book/plugins.html#creating-a-plugin-in-rust
 //! [contributors book]: https://www.nushell.sh/contributor-book
-use nu_plugin::{serve_plugin, MsgPackSerializer, Plugin, EvaluatedCall, LabeledError};
-use nu_protocol::{Signature, Value};
+use nu_plugin::{serve_plugin, EvaluatedCall, LabeledError, MsgPackSerializer, Plugin};
+use nu_protocol::{Signature, Type, Value};
 
 /// The main structure used by the plugin protocol to communicate with `nushell`.
 pub struct StrLen;
@@ -29,7 +29,7 @@ impl Plugin for StrLen {
     fn signature(&self) -> Vec<Signature> {
         vec![Signature::build("len")
             .usage("Give the length of the input string")
-            .input_type(nu_protocol::Type::String)]
+            .input_output_types(vec![(Type::String, Type::Int)])
     }
 
     /// Compute the length of the input `String` value and return as an i64.
