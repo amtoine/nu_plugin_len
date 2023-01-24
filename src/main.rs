@@ -88,7 +88,7 @@ impl Plugin for StrLen {
             _ => {
                 let error_message = format!(
                     "Input is not a string: found {}",
-                    input.get_type().to_string()
+                    input.get_type()
                 );
                 return Err(LabeledError {
                     label: error_message.clone(),
@@ -103,13 +103,11 @@ impl Plugin for StrLen {
                 val: s.len() as i64,
                 span: call.head,
             }),
-            Err(e) => {
-                return Err(LabeledError {
-                    label: "Unable to convert input into a string".to_string(),
-                    msg: e.to_string(),
-                    span: Some(input.span()?),
-                })
-            }
+            Err(e) => Err(LabeledError {
+                label: "Unable to convert input into a string".to_string(),
+                msg: e.to_string(),
+                span: Some(input.span()?),
+            })
         }
     }
 }
