@@ -83,19 +83,13 @@ impl Plugin for StrLen {
         call: &EvaluatedCall,
         input: &Value,
     ) -> Result<Value, LabeledError> {
-        match input.get_type() {
-            Type::String => (),
-            _ => {
-                let error_message = format!(
-                    "Input is not a string: found {}",
-                    input.get_type()
-                );
-                return Err(LabeledError {
-                    label: error_message.clone(),
-                    msg: error_message,
-                    span: Some(input.span()?),
-                });
-            }
+        if input.get_type() != Type::String {
+            let error_message = format!("Input is not a string: found {}", input.get_type());
+            return Err(LabeledError {
+                label: error_message.clone(),
+                msg: error_message,
+                span: Some(input.span()?),
+            });
         }
 
         match input.as_string() {
@@ -107,7 +101,7 @@ impl Plugin for StrLen {
                 label: "Unable to convert input into a string".to_string(),
                 msg: e.to_string(),
                 span: Some(input.span()?),
-            })
+            }),
         }
     }
 }
