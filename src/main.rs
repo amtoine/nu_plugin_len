@@ -60,7 +60,7 @@
 //! [*Create a plugin (in `rust`)*]: https://www.nushell.sh/contributor-book/plugins.html#creating-a-plugin-in-rust
 //! [contributors book]: https://www.nushell.sh/contributor-book
 use nu_plugin::{serve_plugin, EvaluatedCall, LabeledError, MsgPackSerializer, Plugin};
-use nu_protocol::{Category, Signature, Type, Value};
+use nu_protocol::{Category, PluginSignature, Type, Value};
 
 /// The main structure used by the plugin protocol to communicate with `nushell`.
 pub struct StrLen;
@@ -68,8 +68,8 @@ pub struct StrLen;
 /// The implementation of the plugin protocol for our `len`.
 impl Plugin for StrLen {
     /// Define the signature of `len`, taking a single string from `stdin`.
-    fn signature(&self) -> Vec<Signature> {
-        vec![Signature::build("len")
+    fn signature(&self) -> Vec<PluginSignature> {
+        vec![PluginSignature::build("len")
             .usage("Give the length of the input string")
             .allow_variants_without_examples(true)
             .input_output_types(vec![(Type::String, Type::Int)])
