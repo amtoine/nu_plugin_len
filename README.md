@@ -9,14 +9,13 @@ An example plugin for `nushell` to compute length of `String`s
 >
 > even though the paths do not mention `amtoine`, they still are unique to my system...
 
-i've added a little script in [`scripts/`](scripts) called [`add-deps.nu`](scripts/add-deps.nu):
-- have a look at `./scripts/add-deps.nu --help` for more information about the script
 to correctly install these dependencies, which btw are not present at all in the `Cargo.toml`
 to avoid any issues, one can (and probably should) run the following
 ```bash
 > git clone https://github.com/nushell/nushell <path-to-nushell>
 ```
 or choose another way to get the source code of `nushell` somewhere locally :yum:
+
 then
 ```
 > use toolkit.nu
