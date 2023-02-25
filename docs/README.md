@@ -20,7 +20,7 @@ This `nu_plugin_len` is greatly inspired by
 ### some invalid non-string values
 ```bash
 > 1 | len
-Error: 
+Error:
   × Input is not a string: found int
    ╭─[entry #4:1:1]
  1 │ 1 | len
@@ -29,7 +29,7 @@ Error:
    ╰────
 
 > true | len
-Error: 
+Error:
   × Input is not a string: found bool
    ╭─[entry #5:1:1]
  1 │ true | len
@@ -38,7 +38,7 @@ Error:
    ╰────
 
 > 1.23 | len
-Error: 
+Error:
   × Input is not a string: found float
    ╭─[entry #7:1:1]
  1 │ 1.23 | len
@@ -47,7 +47,7 @@ Error:
    ╰────
 
 > {a: "Happy", b: "new", c: "year"} | len
-Error: 
+Error:
   × Input is not a string: found record<a: string, b: string, c: string>
    ╭─[entry #8:1:1]
  1 │ {a: "Happy", b: "new", c: "year"} | len

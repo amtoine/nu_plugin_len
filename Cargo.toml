@@ -6,5 +6,3 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-nu-plugin = { version = "0.74.1", path = "../../nushell/nushell/crates/nu-plugin" }
-nu-protocol = { version = "0.74.1", path = "../../nushell/nushell/crates/nu-protocol", features = ["plugin"] }
