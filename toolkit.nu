@@ -2,9 +2,6 @@ def add [
     dependency
     --path: string
 ] {
-    if not (open Cargo.toml | get -i "dependencies" | get -i $dependency.name | is-empty) {
-        cargo remove $dependency.name
-    }
     if ($dependency.features | is-empty) {
         cargo add $dependency.name --path ($path | path join $dependency.name)
     } else {
@@ -51,6 +48,10 @@ export def setup [
         [nu-plugin []]
         [nu-protocol [plugin]]
     ]
+
+    for dependency in $dependencies {
+        cargo remove $dependency.name
+    }
 
     for dependency in $dependencies {
         add $dependency --path $crates_path
